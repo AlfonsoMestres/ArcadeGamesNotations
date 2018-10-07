@@ -1,4 +1,5 @@
 #include <iostream>
+// #include <assert.h> // for using assert (myPtr!=NULL);
 
 void basicPointers() {
 	std::cout << "Learn basic pointers in c++ with a+3" << std::endl;
@@ -205,82 +206,9 @@ void advancedPointers() {
 
 }
 
-// Template example
-template <class T>
-class Vector3 {
-	T x, y, z;
-	public:
-		Vector3() {};
-		Vector3(T a, T b, T c) {
-			x = a;
-			y = b;
-			z = c;
-		};
-		Vector3(const Vector3<T>& a) { 
-			x = a.x;
-			y = a.y;
-			z = a.z;
-		};
-		Vector3<float> normalize();
-		float distance_to(const Vector3<T>& a);
-		void printVector();
-		Vector3<T> operator+(const Vector3<T>& a);
-};
-
-template <class T>
-Vector3<float> Vector3<T>::normalize() {
-	float vecLen = sqrt((x * x) + (y * y) + (z * z));
-	return Vector3<float>(x / vecLen, y / vecLen, z / vecLen);
-}
-
-template <class T>
-inline float Vector3<T>::distance_to(const Vector3<T>& toVec3) {
-	return sqrt(pow(x - toVec3.x, 2) + pow(y - toVec3.y, 2) + pow(z - toVec3.z, 2));
-}
-
-template <class T>
-void Vector3<T>::printVector() {
-	std::cout << "x: " << x << " y: " << y << " z: " << z << std::endl;
-}
-
-template <class T>
-inline Vector3<T> Vector3<T>::operator+(const Vector3<T>& a) {
-	return Vector3<T>(x + a.x, y + a.y, z + a.z);
-}
-
-
-void vector3Exercise() {
-	// a()
-	Vector3<int> vecA();
-	// b(1,0,1)
-	Vector3<int> vecB(1,0,1);
-	// c(b)
-	Vector3<int> vecC(vecB);
-	// d = b + c
-	Vector3<int> vecD = vecB + vecC;
-	// d.normalize()
-	Vector3<float> normVecD = vecD.normalize();
-	// d.distance_to(b)
-	float distToVecB = vecD.distance_to(vecB);
-
-	std::cout << "Vec B" << std::endl;
-	vecB.printVector();
-	std::cout << "Vec C" << std::endl;
-	vecC.printVector();
-	std::cout << "Vec D" << std::endl;
-	vecD.printVector();
-	
-	std::cout << "Distance between vectors is " << distToVecB << std::endl;
-	std::cout << "Vector A normalized is " << std::endl;
-	normVecD.printVector();
-
-}
-
 int main() {
-
-	// basicPointers();
-	// advancedPointers();
-	vector3Exercise();
+	basicPointers();
+	advancedPointers();
 
 	std::cout << "Press Enter to exit" << std::endl;
 	getchar();
